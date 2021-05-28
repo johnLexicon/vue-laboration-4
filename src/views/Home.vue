@@ -1,6 +1,19 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <div class="h-100 d-flex justify-content-center align-items-center">
+      <SignInForm />
+    </div>
+  </div>
 </template>
+<script>
+import SignInForm from "../components/forms/SignInForm";
+export default {
+  name: "Home",
+  components: {
+    SignInForm,
+  },
+};
+</script>
 <style scoped>
 .home {
   height: 100vh;
