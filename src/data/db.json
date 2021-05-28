@@ -1,0 +1,30 @@
+{
+  "admins": [
+    {
+      "email": "admin1@email.com",
+      "password": "secret",
+      "loggedIn": false,
+      "avatar": ""
+    },
+    {
+      "email": "admin2@email.com",
+      "password": "secret",
+      "loggedIn": false,
+      "avatar": ""
+    }
+  ],
+  "users": [
+    {
+      "email": "user1@email.com",
+      "password": "secret",
+      "loggedIn": false,
+      "avatar": ""
+    },
+    {
+      "email": "user2@email.com",
+      "password": "secret",
+      "loggedIn": false,
+      "avatar": ""
+    }
+  ]
+}
