@@ -1,5 +1,5 @@
 <template>
-  <form style="width: 50vw">
+  <form>
     <!-- Email input -->
     <div class="form-outline mb-5">
       <input
