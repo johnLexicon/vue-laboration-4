@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Users from '../views/Users.vue';
+import Store from '../store';
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,7 @@ const routes = [
     path: '/users',
     name: 'Users',
     component: Users,
+    meta: { requiresAuth: true },
   },
   {
     path: '/about',
@@ -31,6 +33,18 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (Store.getters.signedIn) {
+      next();
+    } else {
+      next({ name: 'Home' });
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;

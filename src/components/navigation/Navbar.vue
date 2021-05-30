@@ -25,7 +25,13 @@
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link" to="/users">Users</router-link>
+            <router-link class="nav-link" exact to="/">Sign In</router-link>
+          </li>
+          <li v-if="$store.getters.signedIn" class="nav-item">
+            <router-link class="nav-link" exact to="/users">Users</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" exact to="/about">About</router-link>
           </li>
         </ul>
         <!-- Left links -->
@@ -33,7 +39,7 @@
       <!-- Collapsible wrapper -->
 
       <!-- Right elements -->
-      <div class="d-flex align-items-center">
+      <div v-if="$store.getters.isSignedIn" class="d-flex align-items-center">
         <!-- Avatar -->
         <a
           class="dropdown-toggle d-flex align-items-center hidden-arrow"
