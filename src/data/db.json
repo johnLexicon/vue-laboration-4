@@ -1,11 +1,15 @@
 {
   "admins": [
     {
+      "_id": "1",
+      "name": "Admin One",
       "email": "admin1@email.com",
       "password": "secret",
       "avatar": ""
     },
     {
+      "_id": "1",
+      "name": "Admin Two",
       "email": "admin2@email.com",
       "password": "secret",
       "avatar": ""
@@ -13,13 +17,15 @@
   ],
   "users": [
     {
+      "_id": "1",
+      "name": "User One",
       "email": "user1@email.com",
-      "password": "secret",
       "avatar": ""
     },
     {
+      "_id": "2",
+      "name": "User Two",
       "email": "user2@email.com",
-      "password": "secret",
       "avatar": ""
     }
   ]
