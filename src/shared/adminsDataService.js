@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API } from './config';
 
-const loginAdmin = async (email, password) => {
+const signInAdmin = async (email, password) => {
   try {
     const response = await axios.post(`${API.admins}/login`, {
       email,
@@ -14,10 +14,22 @@ const loginAdmin = async (email, password) => {
   }
 };
 
-const mockLoginAdmin = (email, password) => {
+const mockSignInAdmin = (email, password) => {
   try {
     const response = await axios.get(`${API.admins}`);
-    return response.data;
+    const admin = response.data.find(admin => admin.email.toLowerCase() === email.toLowerCase());
+    if(!admin){
+      console.log(`Admin with email ${email} not found.`);
+      return null;
+    }
+
+    if(admin.password !== password){
+      console.log('Authentication failed.');
+      return null;
+    }
+    
+    return admin;
+    
   } catch(err){
     console.log(err);
     return null;
@@ -25,5 +37,5 @@ const mockLoginAdmin = (email, password) => {
 }
 
 export const adminsDataService = {
-  loginAdmin: process.env.NODE_ENV === 'production' ? loginAdmin : mockLoginAdmin
+  signInAdmin: process.env.NODE_ENV === 'production' ? signInAdmin : mockSignInAdmin
 };
