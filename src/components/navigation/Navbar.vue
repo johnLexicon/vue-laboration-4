@@ -24,7 +24,7 @@
         /></a>
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+          <li v-if="!$store.getters.signedIn" class="nav-item">
             <router-link class="nav-link" exact to="/">Sign In</router-link>
           </li>
           <li v-if="$store.getters.signedIn" class="nav-item">
@@ -39,7 +39,10 @@
       <!-- Collapsible wrapper -->
 
       <!-- Right elements -->
-      <div v-if="$store.getters.isSignedIn" class="d-flex align-items-center">
+      <div v-if="$store.getters.signedIn" class="d-flex align-items-center">
+        <span class="me-2 text-light"
+          >Welcome {{ $store.getters.admin.name }}</span
+        >
         <!-- Avatar -->
         <a
           class="dropdown-toggle d-flex align-items-center hidden-arrow"
@@ -50,7 +53,7 @@
           aria-expanded="false"
         >
           <img
-            src="https://cdn.pixabay.com/photo/2018/05/19/22/03/man-3414477__340.png"
+            :src="$store.getters.admin.avatar"
             class="rounded-circle"
             height="25"
             alt=""

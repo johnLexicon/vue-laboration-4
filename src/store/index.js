@@ -11,6 +11,7 @@ export default new Vuex.Store({
   },
   getters: {
     signedIn: (state) => state.admin !== null,
+    admin: (state) => state.admin,
   },
   mutations: {
     SIGN_IN: (state, admin) => {
