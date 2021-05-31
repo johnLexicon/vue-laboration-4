@@ -14,28 +14,30 @@ const signInAdmin = async (email, password) => {
   }
 };
 
-const mockSignInAdmin = (email, password) => {
+const mockSignInAdmin = async (email, password) => {
   try {
     const response = await axios.get(`${API.admins}`);
-    const admin = response.data.find(admin => admin.email.toLowerCase() === email.toLowerCase());
-    if(!admin){
+    const admin = response.data.find(
+      (admin) => admin.email.toLowerCase() === email.toLowerCase()
+    );
+    if (!admin) {
       console.log(`Admin with email ${email} not found.`);
       return null;
     }
 
-    if(admin.password !== password){
+    if (admin.password !== password) {
       console.log('Authentication failed.');
       return null;
     }
-    
+
     return admin;
-    
-  } catch(err){
+  } catch (err) {
     console.log(err);
     return null;
   }
-}
+};
 
 export const adminsDataService = {
-  signInAdmin: process.env.NODE_ENV === 'production' ? signInAdmin : mockSignInAdmin
+  signInAdmin:
+    process.env.NODE_ENV === 'production' ? signInAdmin : mockSignInAdmin,
 };
