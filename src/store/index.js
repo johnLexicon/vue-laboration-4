@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import adminsDataService from '../shared/adminsDataService';
+import { adminsDataService } from '../shared/adminsDataService';
 
 Vue.use(Vuex);
 
@@ -18,11 +18,12 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    signIn: async ({ context }, payload) => {
-      const admin = adminsDataService.signInAdmin(
+    signInAdmin: async ({ commit }, payload) => {
+      const admin = await adminsDataService.signInAdmin(
         payload.email,
         payload.password
       );
+      commit('SIGN_IN', admin);
     },
   },
   modules: {},
