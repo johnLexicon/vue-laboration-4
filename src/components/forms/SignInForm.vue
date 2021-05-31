@@ -19,6 +19,9 @@
       />
       <label class="form-label text-light" for="password">Password</label>
     </div>
+    <div class="alert text-danger border border-danger" role="alert">
+      A simple light alert—check it out!
+    </div>
     <!-- Submit button -->
     <button type="submit" class="btn btn-outline-light btn-block">
       Sign in
