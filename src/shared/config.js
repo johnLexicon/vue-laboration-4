@@ -4,5 +4,5 @@ const host =
     : 'https://lexicon-express-users.herokuapp.com/api';
 export const API = {
   users: `${host}/users`,
-  admins: `${host}/users`,
+  admins: `${host}/admins`,
 };
