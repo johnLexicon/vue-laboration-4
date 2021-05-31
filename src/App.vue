@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <div class="content">
+    <div>
       <router-view />
     </div>
   </div>
@@ -15,8 +15,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.content {
-  margin-top: -58px; /* Nav bar height */
-}
-</style>

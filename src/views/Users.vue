@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-md container-fluid mt-5">
     <h1>Users Page</h1>
   </div>
 </template>
