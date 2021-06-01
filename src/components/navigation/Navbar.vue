@@ -30,6 +30,11 @@
           <li v-if="$store.getters.signedIn" class="nav-item">
             <router-link class="nav-link" exact to="/users">Users</router-link>
           </li>
+          <li v-if="$store.getters.signedIn" class="nav-item">
+            <router-link class="nav-link" exact to="/createUser"
+              >Create User</router-link
+            >
+          </li>
           <li class="nav-item">
             <router-link class="nav-link" exact to="/about">About</router-link>
           </li>

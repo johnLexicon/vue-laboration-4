@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Users from '../views/Users.vue';
+import CreateUser from '../views/CreateUser.vue';
 import Store from '../store';
 
 Vue.use(VueRouter);
@@ -16,6 +17,12 @@ const routes = [
     path: '/users',
     name: 'Users',
     component: Users,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/createUser',
+    name: 'CreateUser',
+    component: CreateUser,
     meta: { requiresAuth: true },
   },
   {
