@@ -1,16 +1,20 @@
 <template>
   <div class="container-md container-fluid mt-5">
     <h1>Users Page</h1>
-    <div v-for="user in users" :key="user._id">
-      {{ user.name }}
+    <div class="d-flex flex-wrap">
+      <UserCard v-for="user in users" :user="user" :key="user._id"> </UserCard>
     </div>
   </div>
 </template>
 
 <script>
+import UserCard from "../components/cards/UserCard";
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Users",
+  components: {
+    UserCard,
+  },
   created() {
     this.fetchUsers();
   },
