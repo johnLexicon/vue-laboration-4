@@ -33,6 +33,12 @@
       "name": "User Four",
       "email": "user4@email.com",
       "avatar": "https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_960_720.png"
+    },
+    {
+      "name": "John Lundgren",
+      "email": "john@email.se",
+      "avatar": "https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_960_720.png",
+      "_id": "jl1y6LS"
     }
   ]
 }

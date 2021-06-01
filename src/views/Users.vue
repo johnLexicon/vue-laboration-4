@@ -1,7 +1,7 @@
 <template>
   <div class="container-md container-fluid mt-5">
     <h1>Users Page</h1>
-    <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap justify-content-center">
       <UserCard v-for="user in users" :user="user" :key="user._id"> </UserCard>
     </div>
   </div>

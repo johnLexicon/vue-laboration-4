@@ -1,35 +1,24 @@
 <template>
   <form @submit.prevent="create">
     <div class="mb-3">
-      <label for="fullName" class="form-label">Full name</label>
+      <label for="name" class="form-label">Full name</label>
       <input
-        v-model="user.fullName"
-        id="fullName"
+        required
+        v-model="user.name"
+        id="name"
         type="text"
         class="form-control form-control-lg"
-        :class="errors.fullName ? 'is-invalid' : ''"
       />
-      <div
-        v-show="errors.fullName"
-        class="alert alert-danger border text-danger mt-2"
-      >
-        Full name is mandatory
-      </div>
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
       <input
+        required
         v-model="user.email"
         type="email"
         class="form-control form-control-lg"
         id="email"
       />
-      <div
-        v-show="errors.email"
-        class="alert alert-danger border text-danger mt-2"
-      >
-        Email is mandatory
-      </div>
     </div>
     <div class="mb-3">
       <label for="avatar" class="form-label">Avatar Url</label>
@@ -45,41 +34,28 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "CreateUserForm",
   data() {
     return {
       user: {},
-      errors: {},
-      fullNameDirty: false,
-      emailDirty: false,
+      johnDoeAvatar:
+        "https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_960_720.png",
     };
   },
   methods: {
-    create() {},
-  },
-  watch: {
-    "user.fullName": {
-      immediate: true,
-      handler(newValue) {
-        if (!newValue && this.fullNameDirty) {
-          this.errors.fullName = true;
-        } else {
-          this.errors.fullName = false;
-        }
-        this.fullNameDirty = true;
-      },
-    },
-    "user.email": {
-      immediate: true,
-      handler(newValue) {
-        if (!newValue && this.emailDirty) {
-          this.errors.email = true;
-        } else {
-          this.errors.email = false;
-        }
-        this.emailDirty = true;
-      },
+    ...mapActions(["createUser"]),
+    async create() {
+      if (!this.user.avatar) {
+        this.user.avatar = this.johnDoeAvatar;
+      }
+      const wasAdded = await this.createUser(this.user);
+      if (wasAdded) {
+        this.$router.push("/users");
+        return;
+      }
+      console.error("Problems adding the user");
     },
   },
 };

@@ -25,6 +25,9 @@ export default new Vuex.Store({
     REMOVE_USER: (state, userId) => {
       state.users = state.users.filter((user) => user._id !== userId);
     },
+    ADD_USER: (state, user) => {
+      state.users.push(user);
+    },
   },
   actions: {
     signInAdmin: async ({ commit }, payload) => {
@@ -43,6 +46,14 @@ export default new Vuex.Store({
       if (wasRemoved) {
         commit('REMOVE_USER', userId);
       }
+    },
+    createUser: async ({ commit }, payload) => {
+      const addedUser = await usersDataService.addUser(payload);
+      if (addedUser) {
+        commit('ADD_USER', addedUser);
+        return true;
+      }
+      return false;
     },
   },
   modules: {},
