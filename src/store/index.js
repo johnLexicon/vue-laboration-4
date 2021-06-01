@@ -22,6 +22,9 @@ export default new Vuex.Store({
     SET_USERS: (state, users) => {
       state.users = users;
     },
+    REMOVE_USER: (state, userId) => {
+      state.users = state.users.filter((user) => user._id !== userId);
+    },
   },
   actions: {
     signInAdmin: async ({ commit }, payload) => {
@@ -34,6 +37,12 @@ export default new Vuex.Store({
     fetchUsers: async ({ commit }) => {
       const users = await usersDataService.getAllUsers();
       commit('SET_USERS', users);
+    },
+    removeUser: async ({ commit }, userId) => {
+      const wasRemoved = await usersDataService.removeUser(userId);
+      if (wasRemoved) {
+        commit('REMOVE_USER', userId);
+      }
     },
   },
   modules: {},

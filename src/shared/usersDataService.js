@@ -34,9 +34,13 @@ const addUser = async (user) => {
 const removeUser = async (userId) => {
   try {
     const response = await axios.delete(`${API.users}/${userId}`);
-    console.log(response.data);
+    if (response.status === 200) {
+      return true;
+    }
+    return false;
   } catch (err) {
     console.log(err);
+    return false;
   }
 };
 

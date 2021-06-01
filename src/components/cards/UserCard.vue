@@ -11,15 +11,22 @@
       <p class="card-text">
         {{ user.email }}
       </p>
-      <a href="#" class="btn btn-danger">Remove</a>
+      <button @click="remove" class="btn btn-danger">Remove</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "UserCard",
   props: ["user"],
+  methods: {
+    ...mapActions(["removeUser"]),
+    remove() {
+      this.removeUser(this.user._id);
+    },
+  },
 };
 </script>
 
