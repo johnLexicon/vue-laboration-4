@@ -23,12 +23,6 @@
       "avatar": "https://cdn.pixabay.com/photo/2020/12/26/09/30/girl-5860979__340.png"
     },
     {
-      "_id": "2",
-      "name": "User Two",
-      "email": "user2@email.com",
-      "avatar": "https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_960_720.png"
-    },
-    {
       "_id": "3",
       "name": "User Three",
       "email": "user43email.com",
