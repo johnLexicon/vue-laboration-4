@@ -1,5 +1,5 @@
 <template>
-  <form class="content" v-on:submit.prevent="signIn">
+  <form class="content" v-on:submit.prevent="signIn" autocomplete="off">
     <!-- Email input -->
     <div class="form-outline mb-5">
       <input
@@ -7,6 +7,8 @@
         id="email"
         class="form-control text-light border-bottom border-light"
         v-model="email"
+        autocomplete="off"
+        list="autocompleteOff"
       />
       <label class="form-label text-light" for="email">Email address</label>
     </div>
