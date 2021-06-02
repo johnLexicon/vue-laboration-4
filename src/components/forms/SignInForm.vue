@@ -1,5 +1,5 @@
 <template>
-  <form class="content" v-on:submit.prevent="signIn" autocomplete="off">
+  <form class="content" v-on:submit.prevent="signIn">
     <!-- Email input -->
     <div class="form-outline mb-5">
       <input
@@ -7,8 +7,6 @@
         id="email"
         class="form-control text-light border-bottom border-light"
         v-model="email"
-        autocomplete="off"
-        list="autocompleteOff"
       />
       <label class="form-label text-light" for="email">Email address</label>
     </div>
@@ -59,7 +57,9 @@ export default {
         this.error = "Email and Password are mandatory";
         return;
       }
-      await this.signInAdmin({ email: this.email, password: this.password });
+      const email = this.email;
+      const password = this.password;
+      await this.signInAdmin({ email, password });
       if (this.signedIn) {
         this.$router.replace("/users");
       } else {
