@@ -19,6 +19,9 @@ export default new Vuex.Store({
     SIGN_IN: (state, admin) => {
       state.admin = admin;
     },
+    LOG_OUT: (state) => {
+      state.admin = null;
+    },
     SET_USERS: (state, users) => {
       state.users = users;
     },
@@ -36,6 +39,9 @@ export default new Vuex.Store({
         payload.password
       );
       commit('SIGN_IN', admin);
+    },
+    logOutAdmin: ({ commit }) => {
+      commit('LOG_OUT');
     },
     fetchUsers: async ({ commit }) => {
       const users = await usersDataService.getAllUsers();

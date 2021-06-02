@@ -70,13 +70,7 @@
           aria-labelledby="navbarDropdownMenuLink"
         >
           <li>
-            <a class="dropdown-item" href="#">My profile</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Settings</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Logout</a>
+            <button class="dropdown-item" v-on:click="logOut">Logout</button>
           </li>
         </ul>
       </div>
@@ -88,7 +82,16 @@
 </template>
 
 <script>
-export default {};
+import { mapActions } from "vuex";
+export default {
+  methods: {
+    ...mapActions(["logOutAdmin"]),
+    logOut() {
+      this.logOutAdmin();
+      this.$router.replace("/");
+    },
+  },
+};
 </script>
 
 <style>
