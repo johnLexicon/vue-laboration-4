@@ -38,7 +38,9 @@ export default new Vuex.Store({
         payload.email,
         payload.password
       );
-      commit('SIGN_IN', admin);
+      if (admin) {
+        commit('SIGN_IN', admin);
+      }
     },
     logOutAdmin: ({ commit }) => {
       commit('LOG_OUT');
