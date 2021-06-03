@@ -2,24 +2,25 @@
   <form class="content" v-on:submit.prevent="signIn">
     <!-- Email input -->
     <div class="form-outline mb-5">
+      <label class="form-label text-light" for="email">Email address</label>
       <input
         type="email"
         id="email"
         class="form-control text-light border-bottom border-light"
+        autofocus
         v-model="email"
       />
-      <label class="form-label text-light" for="email">Email address</label>
     </div>
 
     <!-- Password input -->
     <div class="form-outline mb-5">
+      <label class="form-label text-light" for="password">Password</label>
       <input
         type="password"
         id="password"
         class="form-control border-bottom border-light text-light"
         v-model="password"
       />
-      <label class="form-label text-light" for="password">Password</label>
     </div>
     <div
       v-if="error"
