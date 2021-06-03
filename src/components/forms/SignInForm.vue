@@ -22,17 +22,20 @@
         v-model="password"
       />
     </div>
-    <div
-      v-if="error"
-      class="alert text-danger border border-danger"
-      role="alert"
-    >
-      {{ error }}
-    </div>
     <!-- Submit button -->
-    <button type="submit" class="btn btn-outline-light btn-block">
+    <button
+      :disabled="signingIn"
+      type="submit"
+      class="btn btn-outline-light btn-block"
+    >
       Sign in
     </button>
+    <div v-show="signingIn" class="alert small text-success text-center">
+      Signing in...
+    </div>
+    <div v-if="error" class="alert small text-danger text-center" role="alert">
+      {{ error }}
+    </div>
   </form>
 </template>
 
@@ -48,7 +51,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["signedIn"]),
+    ...mapGetters(["signedIn", "signingIn"]),
   },
   methods: {
     ...mapActions(["signInAdmin"]),

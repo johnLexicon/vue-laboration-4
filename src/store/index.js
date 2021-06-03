@@ -8,10 +8,12 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     admin: null,
+    signingIn: false,
     users: [],
   },
   getters: {
     signedIn: (state) => state.admin !== null,
+    signingIn: (state) => state.signingIn,
     admin: (state) => state.admin,
     users: (state) => state.users,
   },
@@ -31,9 +33,13 @@ export default new Vuex.Store({
     ADD_USER: (state, user) => {
       state.users.push(user);
     },
+    SET_SIGNING_IN: (state, signingIn) => {
+      state.signingIn = signingIn;
+    },
   },
   actions: {
     signInAdmin: async ({ commit }, payload) => {
+      commit('SET_SIGNING_IN', true);
       const admin = await adminsDataService.signInAdmin(
         payload.email,
         payload.password
@@ -41,6 +47,7 @@ export default new Vuex.Store({
       if (admin) {
         commit('SIGN_IN', admin);
       }
+      commit('SET_SIGNING_IN', false);
     },
     logOutAdmin: ({ commit }) => {
       commit('LOG_OUT');
