@@ -24,13 +24,13 @@
         /></a>
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li v-if="!$store.getters.signedIn" class="nav-item">
+          <li v-if="!signedIn" class="nav-item">
             <router-link class="nav-link" exact to="/">Sign In</router-link>
           </li>
-          <li v-if="$store.getters.signedIn" class="nav-item">
+          <li v-if="signedIn" class="nav-item">
             <router-link class="nav-link" exact to="/users">Users</router-link>
           </li>
-          <li v-if="$store.getters.signedIn" class="nav-item">
+          <li v-if="signedIn" class="nav-item">
             <router-link class="nav-link" exact to="/createUser"
               >Create User</router-link
             >
@@ -44,10 +44,8 @@
       <!-- Collapsible wrapper -->
 
       <!-- Right elements -->
-      <div v-if="$store.getters.signedIn" class="d-flex align-items-center">
-        <span class="me-2 text-light"
-          >Welcome {{ $store.getters.admin.name }}</span
-        >
+      <div v-if="signedIn" class="d-flex align-items-center">
+        <span class="me-2 text-light">Welcome {{ admin.name }}</span>
         <!-- Avatar -->
         <a
           class="dropdown-toggle d-flex align-items-center hidden-arrow"
@@ -58,7 +56,7 @@
           aria-expanded="false"
         >
           <img
-            :src="$store.getters.admin.avatar"
+            :src="adminAvatar"
             class="rounded-circle"
             height="25"
             alt=""
@@ -82,13 +80,21 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   methods: {
     ...mapActions(["logOutAdmin"]),
     logOut() {
       this.logOutAdmin();
       this.$router.replace("/");
+    },
+  },
+  computed: {
+    ...mapGetters(["admin", "signedIn"]),
+    adminAvatar() {
+      return this.admin.avatar
+        ? this.admin.avatar
+        : "https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_960_720.png";
     },
   },
 };
